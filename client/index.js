@@ -9,7 +9,7 @@ const client = new bitcoin.Client({
   timeout: 30000
 });
 
-client.getInfo(function (err, info, headers) {
+client.getBlockchainInfo(function (err, info, headers) {
     if (err) {
         console.log("Error", err);
     } else {
