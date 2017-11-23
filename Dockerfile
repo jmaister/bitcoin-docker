@@ -10,7 +10,10 @@
 #
 # clean: docker rmi $(docker images -a -q)
 #
-# connect: docker exec -i -t btcrun /bin/bash
+# connect:      docker exec -i -t btcrun /bin/bash
+# connect root: docker exec -i -t -u root btcrun /bin/bash
+#
+# logs: docker logs -f btcrun
 #
 # show network graph: nload
 #
@@ -28,7 +31,7 @@
 #
 
 FROM ubuntu:16.04
-MAINTAINER Jordi Burgos <jordiburgos@gmail.com>
+LABEL maintainer="Jordi Burgos <jordiburgos@gmail.com>"
 
 RUN apt-get -y update
 RUN apt-get -y install software-properties-common
@@ -36,7 +39,9 @@ RUN apt-add-repository ppa:bitcoin/bitcoin
 RUN apt-get -y update
 RUN apt-get -y install bitcoind
 
-#RUN apt-get -y install nload nmap telnet curl net-tools
+#RUN apt-get -y install nload nmap telnet curl net-tools sudo
+
+RUN apt-get -y install curl
 
 RUN apt-get clean && apt-get autoclean && apt-get autoremove
 
@@ -51,6 +56,8 @@ EXPOSE 8332 8333 18332 18333
 # Config
 RUN mkdir -p $HOME/.bitcoin
 COPY bitcoin.conf $HOME/.bitcoin/
+
+COPY walletnotify.sh $HOME
 
 # Data directory
 #RUN mkdir -p /usr/bitcoin
