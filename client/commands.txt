@@ -11,6 +11,16 @@ bitcoin-cli -datadir=/usr/bitcoin -conf=~/.bitcoin/bitcoin.conf getinfo
 bitcoin-cli -datadir=/usr/bitcoin -conf=~/.bitcoin/bitcoin.conf getblockchaininfo
 
 
-curl --data-binary '{"jsonrpc":"1.0","method":"getinfo","params":[]}' -H 'content-type:text/plain;' http://btc:FDxmNSZRKWEC6Sg92eezsxUvdNceIXYrCUDbVADFujM=@127.0.0.1:8332/
+curl --data-binary '{"jsonrpc":"1.0","method":"getblockchaininfo","params":[]}' -H 'content-type:text/plain;' http://btc:FDxmNSZRKWEC6Sg92eezsxUvdNceIXYrCUDbVADFujM=@127.0.0.1:8332/
+curl --data-binary '{"jsonrpc":"1.0","method":"getblockchaininfo","params":[]}' -H 'content-type:text/plain;' http://btc:FDxmNSZRKWEC6Sg92eezsxUvdNceIXYrCUDbVADFujM=@192.168.192.36:8332/
 
 
+
+
+##
+##
+## APP
+##
+
+curl -d "txid=123&otro=aaa" http://127.0.0.1:3000/notify
+curl -d "txid=123&otro=aaa" http://192.168.192.36:3000/notify
