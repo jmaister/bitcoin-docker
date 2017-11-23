@@ -1,6 +1,8 @@
 # Bitcoin-docker
 
-Docker image to start a Bitcoin full node
+Docker image to start a Bitcoin full node.
+
+As of today, the full blockchain is about 195GB. Be patient while it downloads all the blockchain.
 
 # Build
 
@@ -13,3 +15,11 @@ Docker image to start a Bitcoin full node
 I used **~/disk2/bitcoin** as my local folder to store the bitcoin files. You can use whatever folder you like.
 
 **--restart always** is useful to keep the image always running.
+
+## Status while running
+
+    docker logs -f btcrun
+
+Log looks like this. height=495264 shows that the block 495264 has been downloaded, from date='2017-11-20 15:20:44'.
+
+2017-11-23 23:53:45 UpdateTip: new best=0000000000000000009e2864647172364d0df128d8b998ee80a1f56de74d18d9 height=495264 version=0x20000000 log2_work=87.500887 tx=272978254 date='2017-11-20 15:20:44' progress=0.996718 cache=353.4MiB(2621051txo)
