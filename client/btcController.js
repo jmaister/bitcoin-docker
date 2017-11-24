@@ -34,5 +34,14 @@ ctrl.getTxById = (req, res) => {
     });    
 };
 
+ctrl.getBlockById = (blockId) => {
+    client.getBlock(blockId)
+    .then((blockInfo) => {
+        console.log(blockInfo);
+    })
+    .catch(function (err) {
+        console.log('error', err);
+    });    
+};
 
 exports.default = ctrl;

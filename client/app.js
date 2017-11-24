@@ -20,7 +20,13 @@ app.listen(3000, function () {
 app.post('/notify', function (req, res) {
     console.log("/notify");
     console.log(req.body);
-    res.send('OK');
+    res.json({ok: true});
+    if (req.body.c === 'block') {
+        console.log('new block');
+        btcController.getBlockById(req.body.txid);
+    } else {
+        console.log('Other event');
+    }
 });
 
 app.get('/block/height/:height', btcController.getBlockByHeight);
